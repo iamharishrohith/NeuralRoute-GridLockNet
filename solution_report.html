@@ -1,0 +1,429 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Gridlock Hackathon 2.0 - Solution Summary</title>
+  <style>
+    :root {
+      --bg: #f7f9fc;
+      --paper: #ffffff;
+      --ink: #172033;
+      --muted: #657087;
+      --line: #dfe5ee;
+      --accent: #2457d6;
+      --accent-soft: #edf3ff;
+      --good: #12805c;
+      --warn: #b06400;
+      --shadow: 0 18px 45px rgba(21, 33, 55, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      line-height: 1.55;
+    }
+
+    main {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 36px 22px 56px;
+    }
+
+    header {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      padding: 34px;
+      border-radius: 8px;
+    }
+
+    .kicker {
+      margin: 0 0 8px;
+      color: var(--accent);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    h1, h2, h3, p {
+      margin-top: 0;
+    }
+
+    h1 {
+      margin-bottom: 12px;
+      font-size: 34px;
+      line-height: 1.15;
+      letter-spacing: 0;
+    }
+
+    h2 {
+      margin-bottom: 16px;
+      font-size: 22px;
+      letter-spacing: 0;
+    }
+
+    h3 {
+      margin-bottom: 8px;
+      font-size: 16px;
+      letter-spacing: 0;
+    }
+
+    .subtitle {
+      max-width: 760px;
+      margin-bottom: 24px;
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .metric,
+    section {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+    }
+
+    .metric {
+      padding: 16px;
+    }
+
+    .metric span {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    .metric strong {
+      display: block;
+      margin-top: 4px;
+      font-size: 24px;
+      line-height: 1.1;
+    }
+
+    section {
+      margin-top: 18px;
+      padding: 26px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .step {
+      background: var(--accent-soft);
+      border: 1px solid #d8e4ff;
+      border-radius: 8px;
+      padding: 16px;
+    }
+
+    .step p,
+    .note p {
+      margin-bottom: 0;
+      color: var(--muted);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      overflow: hidden;
+      font-size: 14px;
+    }
+
+    th,
+    td {
+      padding: 12px 10px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    tr:last-child td {
+      border-bottom: 0;
+    }
+
+    code {
+      background: #f0f3f8;
+      border: 1px solid #e1e6ef;
+      border-radius: 5px;
+      padding: 2px 6px;
+      color: #14213d;
+      font-family: "Cascadia Code", Consolas, monospace;
+      font-size: 0.95em;
+    }
+
+    .status {
+      color: var(--good);
+      font-weight: 800;
+    }
+
+    .warning {
+      color: var(--warn);
+      font-weight: 800;
+    }
+
+    .note {
+      border-left: 4px solid var(--accent);
+      padding-left: 16px;
+    }
+
+    footer {
+      margin-top: 22px;
+      color: var(--muted);
+      font-size: 13px;
+      text-align: center;
+    }
+
+    @media (max-width: 860px) {
+      .metrics,
+      .grid,
+      .steps {
+        grid-template-columns: 1fr;
+      }
+
+      header,
+      section {
+        padding: 22px;
+      }
+
+      h1 {
+        font-size: 28px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <p class="kicker">Gridlock Hackathon 2.0</p>
+      <h1>Traffic Demand Prediction Solution</h1>
+      <p class="subtitle">
+        Clean, no-leakage preprocessing with recursive lag-aware inference and a 0.9 dampening factor selected through validation.
+      </p>
+      <div class="metrics">
+        <div class="metric">
+          <span>Platform Status</span>
+          <strong class="status">Accepted</strong>
+        </div>
+        <div class="metric">
+          <span>Problem Accuracy</span>
+          <strong>91.39%</strong>
+        </div>
+        <div class="metric">
+          <span>Submission Score</span>
+          <strong>58.26509</strong>
+        </div>
+        <div class="metric">
+          <span>Final Rows</span>
+          <strong>41,778</strong>
+        </div>
+      </div>
+    </header>
+
+    <section>
+      <h2>Solution Pipeline</h2>
+      <div class="steps">
+        <div class="step">
+          <h3>1. Preprocess</h3>
+          <p>Impute road, weather, and temperature fields; decode geohashes; add geohash prefixes.</p>
+        </div>
+        <div class="step">
+          <h3>2. Train</h3>
+          <p>Train GridLockNet with categorical embeddings, continuous features, lag features, and true best-epoch checkpointing.</p>
+        </div>
+        <div class="step">
+          <h3>3. Predict</h3>
+          <p>Run recursive autoregressive inference, feed predicted lags forward with 0.9 dampening, and export <code>submission.csv</code>.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Datasets In Workspace</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>File</th>
+            <th>Rows</th>
+            <th>Columns</th>
+            <th>Missing Values</th>
+            <th>Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>train.csv</code></td>
+            <td>77,299</td>
+            <td>11</td>
+            <td>3,892</td>
+            <td>Raw training data, days 48 and 49, 1,249 geohashes.</td>
+          </tr>
+          <tr>
+            <td><code>test.csv</code></td>
+            <td>41,778</td>
+            <td>10</td>
+            <td>2,104</td>
+            <td>Raw test data, day 49, 1,190 geohashes.</td>
+          </tr>
+          <tr>
+            <td><code>train_clean.csv</code></td>
+            <td>77,299</td>
+            <td>16</td>
+            <td>0</td>
+            <td>No-leakage imputed training data with coordinates and prefixes.</td>
+          </tr>
+          <tr>
+            <td><code>test_clean.csv</code></td>
+            <td>41,778</td>
+            <td>15</td>
+            <td>0</td>
+            <td>No-leakage imputed test data with coordinates and prefixes.</td>
+          </tr>
+          <tr>
+            <td><code>submission.csv</code></td>
+            <td>41,778</td>
+            <td>2</td>
+            <td>0</td>
+            <td>Final accepted submission using recursive dampened predictions.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>Validation And Prediction Summary</h2>
+      <div class="grid">
+        <table>
+          <thead>
+            <tr>
+              <th>Metric</th>
+              <th>Value</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Best model validation R2</td>
+              <td>0.9247</td>
+            </tr>
+            <tr>
+              <td>Recursive validation R2 at 0.9 dampening</td>
+              <td>0.897696</td>
+            </tr>
+            <tr>
+              <td>Recursive validation R2 at 1.0 dampening</td>
+              <td>0.839377</td>
+            </tr>
+            <tr>
+              <td>Recursive validation R2 without lag feedback</td>
+              <td>0.576120</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Dataset</th>
+              <th>Mean</th>
+              <th>Median</th>
+              <th>Max</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Train demand</td>
+              <td>0.093942</td>
+              <td>0.047760</td>
+              <td>1.000000</td>
+            </tr>
+            <tr>
+              <td>Final submission</td>
+              <td>0.168641</td>
+              <td>0.127526</td>
+              <td>0.992774</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section>
+      <h2>Implementation Files</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>File</th>
+            <th>Purpose</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>preprocess.py</code></td>
+            <td>No-leakage imputation, geohash decoding, and clean dataset export.</td>
+            <td class="status">Use</td>
+          </tr>
+          <tr>
+            <td><code>train_model_upgraded.py</code></td>
+            <td>Final model training and recursive dampened prediction.</td>
+            <td class="status">Use</td>
+          </tr>
+          <tr>
+            <td><code>train_model.py</code></td>
+            <td>Original model script with shallow-copy checkpoint issue.</td>
+            <td class="warning">Do not use for final</td>
+          </tr>
+          <tr>
+            <td><code>engineer_lags.py</code></td>
+            <td>Original static lag-feature generation.</td>
+            <td>Legacy helper</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>Final Submission Integrity</h2>
+      <div class="note">
+        <p>
+          <code>submission.csv</code> has exactly 41,778 rows, columns <code>Index</code> and <code>demand</code>,
+          no nulls, no infinities, no duplicate indexes, and all predictions fall within the required 0 to 1 range.
+        </p>
+      </div>
+    </section>
+
+    <footer>
+      Generated locally from the workspace datasets in D:\GridLock 2.0.
+    </footer>
+  </main>
+</body>
+</html>

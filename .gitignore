@@ -1,0 +1,30 @@
+# Dataset files (large files, should not be pushed to GitHub)
+*.csv
+*.zip
+
+# Python temporary files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+
+# Local cache and system directories
+.gemini/
+.system_generated/
+.tempmediaStorage/
+.idea/
+.vscode/
+
+# Local temporary screenshots & testing images
+dashboard_original.png
+dashboard_running.png
+dashboard_updated.png
+master_dashboard.png
+master_dashboard_view.png
+master_dashboard_viewport.png
+gridlocknet_architecture.png
+smart_city_simulation.png
+
+# Keep design resources & logo
+!Monarchs.png
