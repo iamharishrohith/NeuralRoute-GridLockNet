@@ -8,6 +8,7 @@ FLIPKART GRIDLOCK HACKATHON 2.0 - DETAILED METHODOLOGY REPORT
 Model Architecture Name: GridLockNet
 Primary Frameworks & Tools: PyTorch, Pandas, NumPy, Scikit-Learn, CUDA
 Final Submission Status: Verified compliant, Accepted (Score: 58.26509)
+Live Interactive Dashboard URL: https://iamharishrohith.github.io/NeuralRoute-GridLockNet/
 
 ------------------------------------------------------------------------
 1. EXECUTIVE SUMMARY & CORE METHODOLOGY
@@ -98,6 +99,7 @@ We designed a recursive step-by-step prediction loop:
 
 ========================================================================
 FILE MANIFEST IN ZIP:
+- LIVE_DASHBOARD.html       : Sleek automatic redirect file linking directly to the hosted pages URL.
 - approach.txt              : This detailed methodology and architecture report.
 - preprocess.py             : Preprocessing, geohash decoding, and imputation pipeline.
 - train_model_upgraded.py   : Clean training loop, deepcopy fix, and recursive inference loop.
@@ -115,6 +117,7 @@ def main():
     
     zip_filename = "source_files.zip"
     files_to_zip = [
+        "LIVE_DASHBOARD.html",
         "approach.txt", 
         "preprocess.py", 
         "train_model_upgraded.py", 
