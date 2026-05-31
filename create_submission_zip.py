@@ -101,6 +101,9 @@ FILE MANIFEST IN ZIP:
 - approach.txt              : This detailed methodology and architecture report.
 - preprocess.py             : Preprocessing, geohash decoding, and imputation pipeline.
 - train_model_upgraded.py   : Clean training loop, deepcopy fix, and recursive inference loop.
+- dashboard.html            : Premium light-themed interactive master command console.
+- index.html                : Standalone dashboard index file configured for static hosting.
+- solution_report.html      : Core metrics and validation experiment outcome report.
 ========================================================================
 """
 
@@ -110,8 +113,15 @@ def main():
         f.write(approach_text.strip())
     print("approach.txt created!")
     
-    zip_filename = "gridlock_source_files.zip"
-    files_to_zip = ["approach.txt", "preprocess.py", "train_model_upgraded.py"]
+    zip_filename = "source_files.zip"
+    files_to_zip = [
+        "approach.txt", 
+        "preprocess.py", 
+        "train_model_upgraded.py", 
+        "dashboard.html", 
+        "index.html", 
+        "solution_report.html"
+    ]
     
     print(f"\n--- Packaging files into {zip_filename} ---")
     try:
